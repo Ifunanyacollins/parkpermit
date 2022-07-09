@@ -7,6 +7,8 @@
   height: 100%;
   font-family: 'Manrope', sans-serif;
 }
+tspan { font-family: 'Manrope', sans-serif !important;
+  color: #718096;}
 @layer base {
   @font-face {
     font-family: "Inter";

@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Card from "../src/components/card";
 import Layout from "../src/components/Layout";
 import CountCard from "../src/components/StaticComponents/CountCard";
+import InFlowChart from "../src/components/StaticComponents/InFlowChart";
 
 const Home: NextPage = () => {
   return (
@@ -17,7 +18,9 @@ const Home: NextPage = () => {
           </div>
           {/* Permit flow chart */}
           <div>
-            <Card>w</Card>
+            <Card>
+              <InFlowChart />
+            </Card>
           </div>
 
           {/* Extras */}
