@@ -8,15 +8,10 @@ type DataRow = {
   endDate: string;
 };
 
-const data = [
-  {
-    licensePlate: "SKO1234",
-    name: "Collins Ogbuzuru",
-    country: "Germany",
-    startDate: "Novermber 1st 2022",
-    endDate: "December 2nd 2021",
-  },
-];
+type TableProps = {
+  data: DataRow[];
+};
+
 const columns: TableColumn<DataRow>[] = [
   {
     name: "Name",
@@ -48,7 +43,7 @@ const columns: TableColumn<DataRow>[] = [
   },
 ];
 
-function AllPermitTable() {
+function AllPermitTable({ data }: TableProps) {
   return (
     <div>
       <DataTable columns={columns} data={data} selectableRows pagination />
