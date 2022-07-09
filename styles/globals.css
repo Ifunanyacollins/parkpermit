@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 
+#__next , body, html{
+  height: 100%;
+  font-family: 'Manrope', sans-serif;
+}
 @layer base {
   @font-face {
     font-family: "Inter";
@@ -35,16 +39,16 @@
 @layer components{
   
   .btn {
-    @apply flex items-center justify-center gap-2  font-inter font-semibold px-5 py-3 transition duration-300 hover:-translate-y-0.5 transform ease-in-out hover:ring-2  active:ring-4  ring-1
+    @apply flex items-center justify-center gap-2  font-semibold px-5 py-2 transition duration-300 hover:-translate-y-0.5 transform ease-in-out hover:ring-2  active:ring-4  ring-1
   }
 
   .btn-primary {
-    @apply bg-blue-500
+    @apply bg-primary text-white
   }
 
   .btn-default { @apply ring-white }
 
-  .btn-secondary { @apply ring-blue-300 text-blue-400 }
+  .btn-secondary { @apply ring-primary text-primary }
 
   .light_input {
     @apply text-tex-black ring-1 ring-black bg-inherit bg-white  border-none shadow-none  rounded-md px-5 w-full

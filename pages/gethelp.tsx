@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Layout from "../src/components/Layout";
 
-const Home: NextPage = () => {
+const GetHelp: NextPage = () => {
   return (
     <Layout>
       <h1>hello world</h1>
@@ -9,4 +9,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default GetHelp;

@@ -1,12 +1,14 @@
 import type { NextPage } from "next";
 import Layout from "../src/components/Layout";
 
-const Home: NextPage = () => {
+const Permit: NextPage = () => {
   return (
     <Layout>
+      <h1>hello world</h1>
+      <h1>hello world</h1>
       <h1>hello world</h1>
     </Layout>
   );
 };
 
-export default Home;
+export default Permit;

@@ -5,19 +5,11 @@ module.exports = {
       center: true,
     },
 
-    container: {
-      padding: {
-        DEFAULT: "1rem",
-        lg: "1rem",
-        xl: "4rem",
-        "2xl": "10rem",
-      },
-    },
     extend: {
-      fontFamily: {
-        poppins: ["Poppins"],
-        inter: ["Inter"],
-        poppinsMedium: ["Poppins-Medium"],
+      colors: {
+        primary: "#161A22",
+        greyscale900: "#1A202C",
+        greyscale600: "#718096",
       },
     },
   },
