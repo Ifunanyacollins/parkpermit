@@ -7,8 +7,16 @@
   height: 100%;
   font-family: 'Manrope', sans-serif;
 }
-tspan { font-family: 'Manrope', sans-serif !important;
-  color: #718096;}
+tspan , .rdt_Table{ font-family: 'Manrope', sans-serif !important;
+  color: #718096;
+
+}
+
+.rdt_TableHead {
+  font-weight: 800 !important;
+  color: black !important;
+  font-size: 0.8em !important;
+  }
 @layer base {
   @font-face {
     font-family: "Inter";
@@ -59,4 +67,9 @@ tspan { font-family: 'Manrope', sans-serif !important;
 
 .btn {
   border-radius: 16px;
+}
+
+.btc {
+  background: linear-gradient(270deg, rgba(255, 255, 255, 0.135) -16.33%, rgba(255, 255, 255, 0) 29.46%);
+transform: matrix(-1, 0, 0, 1, 0, 0);
 }

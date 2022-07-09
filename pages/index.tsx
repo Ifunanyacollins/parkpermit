@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Card from "../src/components/card";
 import Layout from "../src/components/Layout";
+import ActionCard from "../src/components/StaticComponents/ActionCard";
 import CountCard from "../src/components/StaticComponents/CountCard";
 import InFlowChart from "../src/components/StaticComponents/InFlowChart";
 
@@ -25,6 +26,7 @@ const Home: NextPage = () => {
 
           {/* Extras */}
           <div className="grid grid-cols-2 gap-3">
+            <ActionCard />
             <Card>w</Card>
           </div>
         </div>
