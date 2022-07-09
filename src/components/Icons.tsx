@@ -1,6 +1,6 @@
 import React from "react";
 
-function Play(props) {
+function Play(props: any) {
   return (
     <svg
       width="8"
@@ -17,7 +17,7 @@ function Play(props) {
   );
 }
 
-function CircleBank(props) {
+function CircleBank(props: any) {
   return (
     <svg
       width="36"
@@ -35,7 +35,7 @@ function CircleBank(props) {
   );
 }
 
-function CircleSchool(props) {
+function CircleSchool(props: any) {
   return (
     <svg
       width="36"
@@ -53,7 +53,7 @@ function CircleSchool(props) {
   );
 }
 
-function CircleHandShake(props) {
+function CircleHandShake(props: any) {
   return (
     <svg
       width="36"
@@ -83,7 +83,7 @@ function CircleHandShake(props) {
   );
 }
 
-function CircleBin(props) {
+function CircleBin(props: any) {
   return (
     <svg
       width="36"
@@ -101,7 +101,7 @@ function CircleBin(props) {
   );
 }
 
-function CircleNetwork(props) {
+function CircleNetwork(props: any) {
   return (
     <svg
       width="36"
@@ -119,7 +119,7 @@ function CircleNetwork(props) {
   );
 }
 
-function CircleShop(props) {
+function CircleShop(props: any) {
   return (
     <svg
       width="36"
@@ -141,7 +141,7 @@ function CircleShop(props) {
   );
 }
 
-function Send(props) {
+function Send(props: any) {
   return (
     <svg
       width="27"
@@ -161,7 +161,7 @@ function Send(props) {
   );
 }
 
-function ArrowRight(props) {
+function ArrowRight(props: any) {
   return (
     <svg
       width="14"
@@ -180,7 +180,7 @@ function ArrowRight(props) {
   );
 }
 
-function Facebook(props) {
+function Facebook(props: any) {
   return (
     <svg
       width="16"
@@ -197,7 +197,7 @@ function Facebook(props) {
   );
 }
 
-function Instagram(props) {
+function Instagram(props: any) {
   return (
     <svg
       width="16"
@@ -222,7 +222,7 @@ function Instagram(props) {
   );
 }
 
-function Twitter(props) {
+function Twitter(props: any) {
   return (
     <svg
       width="16"
@@ -278,7 +278,7 @@ function Search() {
   );
 }
 
-function CirclePlay(props) {
+function CirclePlay(props: any) {
   return (
     <svg
       width={96}
@@ -335,7 +335,7 @@ function CirclePlay(props) {
   );
 }
 
-function SearchBlog(props) {
+function SearchBlog(props: any) {
   return (
     <svg
       width={40}
@@ -357,7 +357,7 @@ function SearchBlog(props) {
   );
 }
 
-function Line(props) {
+function Line(props: any) {
   return (
     <svg
       width={38}
@@ -376,7 +376,7 @@ function Line(props) {
   );
 }
 
-function Loading(props) {
+function Loading(props: any) {
   return (
     <svg
       width={14}
@@ -394,7 +394,7 @@ function Loading(props) {
   );
 }
 
-function Star(props) {
+function Star(props: any) {
   return (
     <svg
       width={25}
@@ -419,7 +419,7 @@ function Star(props) {
   );
 }
 
-function User(props) {
+function User(props: any) {
   return (
     <svg
       width={36}
@@ -438,7 +438,7 @@ function User(props) {
   );
 }
 
-function Link(props) {
+function Link(props: any) {
   return (
     <svg
       width={36}
@@ -467,7 +467,7 @@ function Link(props) {
   );
 }
 
-function Money(props) {
+function Money(props: any) {
   return (
     <svg
       width={36}
@@ -496,7 +496,7 @@ function Money(props) {
   );
 }
 
-function Installments(props) {
+function Installments(props: any) {
   return (
     <svg
       width={36}
@@ -519,7 +519,7 @@ function Installments(props) {
   );
 }
 
-function Share(props) {
+function Share(props: any) {
   return (
     <svg
       width={36}
@@ -541,7 +541,7 @@ function Share(props) {
   );
 }
 
-function Arrow(props) {
+function Arrow(props: any) {
   return (
     <svg
       width={40}
@@ -559,7 +559,7 @@ function Arrow(props) {
   );
 }
 
-function Risk(props) {
+function Risk(props: any) {
   return (
     <svg
       width={40}
@@ -581,7 +581,7 @@ function Risk(props) {
   );
 }
 
-function Smiley(props) {
+function Smiley(props: any) {
   return (
     <svg
       width={40}
@@ -642,7 +642,7 @@ function Graduation() {
   );
 }
 
-function HandShake(params) {
+function HandShake(props: any) {
   return (
     <svg
       width="38"
@@ -659,7 +659,7 @@ function HandShake(params) {
   );
 }
 
-function Government(params) {
+function Government(props: any) {
   return (
     <svg
       width="38"
@@ -693,7 +693,7 @@ function Network() {
   );
 }
 
-function ShopBag(params) {
+function ShopBag(props: any) {
   return (
     <svg
       width="40"
@@ -714,7 +714,7 @@ function ShopBag(params) {
   );
 }
 
-function Merchant(params) {
+function Merchant(props: any) {
   return (
     <svg
       width="34"
@@ -731,7 +731,7 @@ function Merchant(params) {
   );
 }
 
-function MFB(params) {
+function MFB(props: any) {
   return (
     <svg
       width="30"
@@ -748,7 +748,7 @@ function MFB(params) {
   );
 }
 
-function Card(params) {
+function Card(props: any) {
   return (
     <svg
       width="30"
@@ -765,7 +765,7 @@ function Card(params) {
   );
 }
 
-function Checked(props) {
+function Checked(props: any) {
   return (
     <svg
       width={100}
@@ -820,7 +820,7 @@ function Youtube() {
   );
 }
 
-export default {
+const icons: { [key: string]: React.ReactElement } = {
   play: <Play />,
   circlebank: <CircleBank />,
   circleschool: <CircleSchool />,
@@ -860,3 +860,5 @@ export default {
   checked: <Checked />,
   youtube: <Youtube />,
 };
+
+export default icons;
