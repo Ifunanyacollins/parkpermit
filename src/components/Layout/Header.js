@@ -7,7 +7,7 @@ import { routes } from "./Sidebar";
 function Header({ user = "Collins Ogbuzuru" }) {
   const { pathname } = useRouter();
   return (
-    <div className="h-20 p-5 px-20 flex justify-between items-center">
+    <div className="h-20 p-5 px-10 flex justify-between items-center">
       <div className="justify-self-start">
         <h1 className=" font-extrabold text-2xl">{routes[pathname]}</h1>
       </div>

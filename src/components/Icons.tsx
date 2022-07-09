@@ -254,8 +254,8 @@ function Report() {
         strokeLinejoin="round"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M13.9051 2.16663H6.09556C3.37334 2.16663 1.66699 4.09336 1.66699 6.82092V14.179C1.66699 16.9066 3.3654 18.8333 6.09556 18.8333H13.9051C16.6352 18.8333 18.3337 16.9066 18.3337 14.179V6.82092C18.3337 4.09336 16.6352 2.16663 13.9051 2.16663Z"
         stroke="currentColor"
         strokeWidth="1.5"

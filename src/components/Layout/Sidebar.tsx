@@ -14,12 +14,12 @@ export const routes = {
 
 function Sidebar() {
   return (
-    <div className="p-5 grid grid-rows-6 h-full">
+    <div className="p-4 grid grid-rows-6 h-full">
       <div className="grid place-content-center border-b  row-span-1">
         <div>
           <p className="lg:text-2xl md:text-xl font-extrabold">Park Permit</p>
           <span className="text-xs text-right block font-bold">
-            by peter parker
+            by peter park
           </span>
         </div>
       </div>

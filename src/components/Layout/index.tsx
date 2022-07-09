@@ -12,7 +12,7 @@ function Layout({ children: content }: LayoutProps) {
       </section>
       <section className=" bg-[#F7F7F9] col-span-10 overflow-scroll">
         <Header />
-        <div className="mx-20">{content}</div>
+        <div className="mx-10 py-10">{content}</div>
       </section>
     </main>
   );
