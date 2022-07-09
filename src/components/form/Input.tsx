@@ -1,5 +1,5 @@
 import React from "react";
-
+import classnames from "classnames";
 const sizes = {
   small: "20px",
   medium: "30px",
@@ -19,13 +19,14 @@ const Input = ({
   style,
   ...rest
 }: inputprops & Omit<React.HTMLProps<HTMLInputElement>, "size" | "style">) => {
+  const inputClassName = classnames(className, "font-inter");
   return (
     <input
       {...rest}
       id={name}
       name={name}
       style={{ height: sizes[size], ...style }}
-      className={className}
+      className={inputClassName}
     />
   );
 };
@@ -38,6 +39,7 @@ const Password = ({
   className,
   ...rest
 }: inputprops & Omit<React.HTMLProps<HTMLInputElement>, "size" | "style">) => {
+  const inputClassName = classnames(className, "font-inter");
   return (
     <input
       {...rest}
@@ -46,7 +48,7 @@ const Password = ({
       name={name}
       required={required}
       style={{ height: sizes[size], ...style }}
-      className={className}
+      className={inputClassName}
     />
   );
 };
@@ -60,13 +62,14 @@ const Textarea = ({
   ...rest
 }: inputprops &
   Omit<React.HTMLProps<HTMLTextAreaElement>, "size" | "style">) => {
+  const inputClassName = classnames(className, "font-inter");
   return (
     <textarea
       {...rest}
       id={name}
       name={name}
       required={required}
-      className={className}
+      className={inputClassName}
     />
   );
 };
