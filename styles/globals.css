@@ -7,8 +7,16 @@
   height: 100%;
   font-family: 'Manrope', sans-serif;
 }
-tspan { font-family: 'Manrope', sans-serif !important;
-  color: #718096;}
+tspan , .rdt_Table{ font-family: 'Manrope', sans-serif !important;
+  color: #718096;
+
+}
+
+.rdt_TableHead {
+  font-weight: 800 !important;
+  color: black !important;
+  font-size: 0.8em !important;
+  }
 @layer base {
   @font-face {
     font-family: "Inter";

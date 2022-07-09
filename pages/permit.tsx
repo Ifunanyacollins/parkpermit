@@ -2,8 +2,14 @@ import type { NextPage } from "next";
 import Card from "../src/components/card";
 import Layout from "../src/components/Layout";
 import CountCard from "../src/components/StaticComponents/CountCard";
-import AllPermitTable from "../src/tables/AllPermitTable";
 
+import dynamic from "next/dynamic";
+import icons from "../src/components/Icons";
+import Search from "../src/components/Search";
+
+const AllPermitTable = dynamic(() => import("../src/tables/AllPermitTable"), {
+  ssr: false,
+});
 const Permit: NextPage = () => {
   return (
     <Layout>
@@ -15,8 +21,10 @@ const Permit: NextPage = () => {
 
       <div className="my-10">
         <Card>
-          <div className="mb-10 mt-5">
+          <div className="mb-10 mt-5 flex justify-between">
             <p className="text-lg font-bold ">All Park Permit</p>
+
+            <Search className=" w-1/4" />
           </div>
 
           <AllPermitTable />
