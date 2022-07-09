@@ -60,3 +60,8 @@ tspan { font-family: 'Manrope', sans-serif !important;
 .btn {
   border-radius: 16px;
 }
+
+.btc {
+  background: linear-gradient(270deg, rgba(255, 255, 255, 0.135) -16.33%, rgba(255, 255, 255, 0) 29.46%);
+transform: matrix(-1, 0, 0, 1, 0, 0);
+}
