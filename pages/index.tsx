@@ -4,7 +4,6 @@ import Layout from "../src/components/Layout";
 import ActionCard from "../src/components/StaticComponents/ActionCard";
 import CountCard from "../src/components/StaticComponents/CountCard";
 import InFlowChart from "../src/components/StaticComponents/InFlowChart";
-import { handleValidator } from "../src/libs/license";
 
 const Home: NextPage = () => {
   return (

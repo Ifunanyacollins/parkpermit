@@ -24,7 +24,7 @@ const Input = ({
   const inputClassName = classnames(
     className,
     "font-inter",
-    error && "ring-red-400"
+    error && "border-red-400 border focus:border-red-400 focus:ring-red-400"
   );
 
   return (
