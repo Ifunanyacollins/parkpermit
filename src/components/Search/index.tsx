@@ -8,7 +8,8 @@ type searchProps = {
 function Search({
   className,
   ...props
-}: searchProps & Pick<React.HTMLProps<HTMLInputElement>, "onChange">) {
+}: searchProps &
+  Pick<React.HTMLProps<HTMLInputElement>, "onChange" | "placeholder">) {
   const searchClass = classname(className);
   return (
     <div

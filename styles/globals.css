@@ -49,7 +49,7 @@ tspan , .rdt_Table{ font-family: 'Manrope', sans-serif !important;
 @layer components{
   
   .btn {
-    @apply flex items-center justify-center gap-2  font-semibold px-5 py-2 transition duration-300 hover:-translate-y-0.5 transform ease-in-out hover:ring-2  active:ring-4  ring-1
+    @apply flex items-center justify-center gap-2  ring-black font-semibold px-5 py-2 transition duration-300 hover:-translate-y-0.5 transform ease-in-out hover:ring-2  active:ring-4  ring-1
   }
 
   .btn-primary {
@@ -73,3 +73,9 @@ tspan , .rdt_Table{ font-family: 'Manrope', sans-serif !important;
   background: linear-gradient(270deg, rgba(255, 255, 255, 0.135) -16.33%, rgba(255, 255, 255, 0) 29.46%);
 transform: matrix(-1, 0, 0, 1, 0, 0);
 }
+
+
+
+
+
+

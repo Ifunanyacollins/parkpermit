@@ -11,20 +11,28 @@ type inputprops = {
   name?: string;
   className?: string;
   style?: React.CSSProperties;
+  error?: boolean;
 };
 const Input = ({
   size = "medium",
   name,
   className,
   style,
+  error,
   ...rest
 }: inputprops & Omit<React.HTMLProps<HTMLInputElement>, "size" | "style">) => {
-  const inputClassName = classnames(className, "font-inter");
+  const inputClassName = classnames(
+    className,
+    "font-inter",
+    error && "ring-red-400"
+  );
+
   return (
     <input
       {...rest}
       id={name}
       name={name}
+      value={rest.value || ""}
       style={{ height: sizes[size], ...style }}
       className={inputClassName}
     />
@@ -46,6 +54,7 @@ const Password = ({
       id={name}
       type="password"
       name={name}
+      value={rest.value || ""}
       required={required}
       style={{ height: sizes[size], ...style }}
       className={inputClassName}
@@ -68,6 +77,7 @@ const Textarea = ({
       {...rest}
       id={name}
       name={name}
+      value={rest.value || ""}
       required={required}
       className={inputClassName}
     />

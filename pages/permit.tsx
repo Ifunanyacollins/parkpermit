@@ -1,14 +1,22 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import type { NextPage } from "next";
 import Card from "../src/components/card";
 import Layout from "../src/components/Layout";
 import CountCard from "../src/components/StaticComponents/CountCard";
 import dynamic from "next/dynamic";
 import Search from "../src/components/Search";
+import Button from "../src/components/button";
 
 const AllPermitTable = dynamic(() => import("../src/tables/AllPermitTable"), {
   ssr: false,
 });
+
+const PermitCreator = dynamic(
+  () => import("../src/components/StaticComponents/PermitCreator"),
+  {
+    ssr: false,
+  }
+);
 
 const data = [
   {
@@ -46,6 +54,10 @@ const data = [
 
 const Permit: NextPage = () => {
   const [filterText, setFilterText] = useState("");
+  const [openDrawer, setOpenDrawwer] = useState(false);
+  const handleToggle = () => {
+    setOpenDrawwer((prev) => !prev);
+  };
 
   const filteredItems = data.filter(
     (item) =>
@@ -66,18 +78,30 @@ const Permit: NextPage = () => {
         <Card>
           <div className="mb-10 mt-5 flex justify-between">
             <p className="text-lg font-bold ">All Park Permit</p>
+            <div className="flex w-4/6 space-x-5 justify-end">
+              <Search
+                className=" w-2/4"
+                placeholder="search..."
+                onChange={(e) =>
+                  setFilterText((e.target as HTMLInputElement).value)
+                }
+              />
 
-            <Search
-              className="w-1/4"
-              onChange={(e) =>
-                setFilterText((e.target as HTMLInputElement).value)
-              }
-            />
+              <Button onClick={() => setOpenDrawwer(true)} type="primary">
+                Create Permit
+              </Button>
+            </div>
           </div>
 
           <AllPermitTable data={filteredItems} />
         </Card>
       </div>
+
+      <PermitCreator
+        open={openDrawer}
+        onClose={setOpenDrawwer}
+        onHandleClick={handleToggle}
+      />
     </Layout>
   );
 };
