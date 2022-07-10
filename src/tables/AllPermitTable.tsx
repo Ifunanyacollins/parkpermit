@@ -1,6 +1,6 @@
 import DataTable, { TableColumn } from "react-data-table-component";
 
-type DataRow = {
+export type DataRow = {
   licensePlate: string;
   name: string;
   country: string;

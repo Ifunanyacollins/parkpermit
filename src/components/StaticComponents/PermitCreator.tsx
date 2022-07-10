@@ -5,12 +5,15 @@ import Input from "../form/Input";
 import DatePicker from "react-datepicker";
 import { licenseValidator } from "../../libs/license";
 import Button from "../button";
+import { toast } from "react-toastify";
+import Requests from "../../libs/request";
 function PermitCreator({
   open = false,
   onClose,
   onHandleClick,
 }: {
   open: boolean;
+
   onClose: React.Dispatch<React.SetStateAction<boolean>>;
   onHandleClick: () => void;
 }) {
@@ -18,6 +21,24 @@ function PermitCreator({
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
   const [country, setCountry] = useState("germany");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = (values: any) => {
+    setLoading(true);
+    Requests.fetchWithOutToken({
+      url: "/permit",
+      method: "POST",
+      data: values,
+    })
+      .then((res) => {
+        setLoading(false);
+        toast(res.message, { type: "success" });
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+      });
+  };
   return (
     <Drawer
       level={null}
@@ -26,13 +47,9 @@ function PermitCreator({
       open={open}
       onHandleClick={onHandleClick}
     >
-      <section className="p-10 py-20">
-        <Form
-          onFinish={(values) => {
-            console.log("Finish:", values);
-          }}
-          form={form}
-        >
+      <section className="p-10 py-10">
+        <p className="font-bold text-lg py-10">Create park permit</p>
+        <Form onFinish={handleSubmit} form={form}>
           {(values, form) => {
             const licensePlateError = form.getFieldError("licensePlate");
             const nameError = form.getFieldError("name");
@@ -138,7 +155,11 @@ function PermitCreator({
                   </span>
                 </div>
                 <div className="flex items-end">
-                  <Button className="py-4 w-full" type="primary">
+                  <Button
+                    loading={loading}
+                    className="py-4 w-full"
+                    type="primary"
+                  >
                     Submit
                   </Button>
                 </div>

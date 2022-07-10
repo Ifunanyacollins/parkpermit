@@ -6,7 +6,8 @@ import CountCard from "../src/components/StaticComponents/CountCard";
 import dynamic from "next/dynamic";
 import Search from "../src/components/Search";
 import Button from "../src/components/button";
-
+import { dehydrate, QueryClient, useQuery } from "react-query";
+import Requests from "../src/libs/request";
 const AllPermitTable = dynamic(() => import("../src/tables/AllPermitTable"), {
   ssr: false,
 });
@@ -18,54 +19,24 @@ const PermitCreator = dynamic(
   }
 );
 
-const data = [
-  {
-    licensePlate: "SKO1234",
-    name: "Collins Ogbuzuru",
-    country: "Germany",
-    startDate: "Novermber 1st 2022",
-    endDate: "December 2nd 2021",
-  },
-
-  {
-    licensePlate: "CKO1234",
-    name: "Justin Ogbuzuru",
-    country: "Switzerland,",
-    startDate: "Novermber 1st 2022",
-    endDate: "December 2nd 2021",
-  },
-
-  {
-    licensePlate: "WKO1234",
-    name: "Gift Ogbonana",
-    country: "Austria",
-    startDate: "Novermber 1st 2022",
-    endDate: "December 2nd 2021",
-  },
-
-  {
-    licensePlate: "PKO1234",
-    name: "Patrick Igwe",
-    country: "France",
-    startDate: "Novermber 1st 2022",
-    endDate: "December 2nd 2021",
-  },
-];
-
-const Permit: NextPage = () => {
+const Permit: NextPage = (props) => {
+  const { data, isLoading } = useQuery("permits", () =>
+    Requests.fetchWithOutToken({ url: "/permit", method: "GET" })
+  );
   const [filterText, setFilterText] = useState("");
   const [openDrawer, setOpenDrawwer] = useState(false);
   const handleToggle = () => {
     setOpenDrawwer((prev) => !prev);
   };
 
-  const filteredItems = data.filter(
-    (item) =>
+  const filteredItems = data?.filter(
+    (item: any) =>
       (item.name &&
         item.name.toLowerCase().includes(filterText.toLowerCase())) ||
       (item.licensePlate &&
         item.licensePlate.toLowerCase().includes(filterText.toLowerCase()))
   );
+
   return (
     <Layout>
       <div className="grid grid-cols-3 gap-3">
@@ -105,5 +76,19 @@ const Permit: NextPage = () => {
     </Layout>
   );
 };
+
+export async function getServerSideProps() {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery("permits", () =>
+    Requests.fetchWithOutToken({ url: "/permit", method: "GET" })
+  );
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+}
 
 export default Permit;

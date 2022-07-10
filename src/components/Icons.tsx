@@ -265,6 +265,24 @@ function Report() {
     </svg>
   );
 }
+
+function Loading() {
+  return (
+    <svg
+      width={14}
+      height={14}
+      viewBox="0 0 14 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M7 .333A.667.667 0 006.333 1v2a.667.667 0 001.334 0V1A.667.667 0 007 .333zM7 10.333a.667.667 0 00-.667.667v2a.667.667 0 001.334 0v-2A.667.667 0 007 10.333zM13 6.333a.667.667 0 010 1.334h-2a.667.667 0 110-1.334h2zM3.667 7A.667.667 0 003 6.333H1a.667.667 0 000 1.334h2A.667.667 0 003.667 7zM10.771 2.286a.667.667 0 11.943.943L10.3 4.643a.667.667 0 11-.943-.943l1.414-1.414zM4.643 9.357a.667.667 0 00-.943 0l-1.414 1.414a.667.667 0 10.943.943L4.643 10.3a.667.667 0 000-.943zM11.714 10.771a.667.667 0 11-.943.943L9.357 10.3a.667.667 0 11.943-.943l1.414 1.414zM4.643 4.643a.667.667 0 000-.943L3.229 2.286a.667.667 0 10-.943.943L3.7 4.643c.26.26.683.26.943 0z"
+        fill="#FCFCFD"
+      />
+    </svg>
+  );
+}
+
 const icons: { [key: string]: React.ReactElement } = {
   home: <Home />,
   ticket: <Ticket />,
@@ -275,6 +293,7 @@ const icons: { [key: string]: React.ReactElement } = {
   search: <Search />,
   card: <Card />,
   report: <Report />,
+  loading: <Loading />,
 };
 
 export default icons;
