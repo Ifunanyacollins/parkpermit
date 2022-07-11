@@ -8,6 +8,7 @@ import Search from "../src/components/Search";
 import Button from "../src/components/button";
 import { dehydrate, QueryClient, useQuery } from "react-query";
 import Requests from "../src/libs/request";
+import { DataRow } from "../src/tables/AllPermitTable";
 const AllPermitTable = dynamic(() => import("../src/tables/AllPermitTable"), {
   ssr: false,
 });
@@ -20,13 +21,19 @@ const PermitCreator = dynamic(
 );
 
 const Permit: NextPage = (props) => {
-  const { data, isLoading } = useQuery("permits", () =>
+  const { data, isLoading, refetch } = useQuery("permits", () =>
     Requests.fetchWithOutToken({ url: "/permit", method: "GET" })
   );
   const [filterText, setFilterText] = useState("");
   const [openDrawer, setOpenDrawwer] = useState(false);
+  const [editData, setEditData] = useState<DataRow>({} as DataRow);
   const handleToggle = () => {
     setOpenDrawwer((prev) => !prev);
+  };
+
+  const handleSelectEditData = (data: any) => {
+    setEditData(data);
+    setOpenDrawwer(true);
   };
 
   const filteredItems = data?.filter(
@@ -64,14 +71,19 @@ const Permit: NextPage = (props) => {
             </div>
           </div>
 
-          <AllPermitTable data={filteredItems} />
+          <AllPermitTable
+            data={filteredItems}
+            handleSelectEditData={handleSelectEditData}
+          />
         </Card>
       </div>
 
       <PermitCreator
         open={openDrawer}
-        onClose={setOpenDrawwer}
         onHandleClick={handleToggle}
+        refetch={refetch}
+        dataToEdit={editData}
+        setEditData={setEditData}
       />
     </Layout>
   );

@@ -1,20 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Drawer from "rc-drawer";
 import Form, { Field, useForm } from "rc-field-form";
 import Input from "../form/Input";
 import DatePicker from "react-datepicker";
 import { licenseValidator } from "../../libs/license";
 import Button from "../button";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import Requests from "../../libs/request";
+import { DataRow } from "../../tables/AllPermitTable";
+
 function PermitCreator({
   open = false,
-  onClose,
+  dataToEdit,
+  refetch,
+  setEditData,
   onHandleClick,
 }: {
   open: boolean;
-
-  onClose: React.Dispatch<React.SetStateAction<boolean>>;
+  dataToEdit: DataRow;
+  setEditData: React.Dispatch<React.SetStateAction<any>>;
+  refetch: any;
   onHandleClick: () => void;
 }) {
   const [form] = Form.useForm();
@@ -22,17 +27,48 @@ function PermitCreator({
   const [endDate, setEndDate] = useState<Date | null>(null);
   const [country, setCountry] = useState("germany");
   const [loading, setLoading] = useState(false);
+  const [updateMode, setUpdateMode] = useState(false);
+
+  useEffect(() => {
+    if (Object.keys(dataToEdit).length) {
+      setUpdateMode(true);
+      const { country, startDate, endDate, licensePlate, name } = dataToEdit;
+      form.setFieldValue("name", name);
+      form.setFieldValue("country", country);
+      form.setFieldValue("licensePlate", licensePlate);
+      form.setFieldValue("startDate", startDate);
+      form.setFieldValue("endDate", endDate);
+      setCountry(country);
+      return;
+    }
+    form.resetFields();
+    setUpdateMode(false);
+  }, [dataToEdit]);
 
   const handleSubmit = (values: any) => {
     setLoading(true);
     Requests.fetchWithOutToken({
-      url: "/permit",
-      method: "POST",
+      url: updateMode ? `permit/${dataToEdit.id}` : "/permit",
+      method: updateMode ? "PUT" : "POST",
       data: values,
     })
       .then((res) => {
         setLoading(false);
-        toast(res.message, { type: "success" });
+        if (res) {
+          refetch("permits");
+          form.resetFields();
+          setEndDate(null);
+          setStartDate(null);
+          setEditData({});
+          toast(
+            updateMode
+              ? "Permit Updated successfully"
+              : "Permit Created successfully",
+            { type: "success" }
+          );
+          return;
+        }
+        toast("An error occured, please try again", { type: "error" });
       })
       .catch((error) => {
         setLoading(false);
@@ -48,7 +84,17 @@ function PermitCreator({
       onHandleClick={onHandleClick}
     >
       <section className="p-10 py-10">
-        <p className="font-bold text-lg py-10">Create park permit</p>
+        <div className="flex justify-between items-center">
+          <p className="font-bold text-lg py-10">Create park permit</p>
+          {updateMode && (
+            <div>
+              <Button onClick={() => setEditData({})} type="secondary">
+                Create new permit
+              </Button>
+            </div>
+          )}
+        </div>
+
         <Form onFinish={handleSubmit} form={form}>
           {(values, form) => {
             const licensePlateError = form.getFieldError("licensePlate");
@@ -59,7 +105,7 @@ function PermitCreator({
               <div className="grid grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="name" className="block mb-2">
-                    Full Name
+                    Full Name <span className="text-red-500">*</span>
                   </label>
                   <Field name="name" rules={[{ required: true }]}>
                     <Input
@@ -74,9 +120,9 @@ function PermitCreator({
                 </div>
                 <div>
                   <label htmlFor="country" className="block mb-2">
-                    Country
+                    Country <span className="text-red-500">*</span>
                   </label>
-                  <Field name="Country" rules={[{ required: true }]}>
+                  <Field name="country" rules={[{ required: true }]}>
                     <select
                       required
                       style={{ height: "55px", width: "100%" }}
@@ -97,10 +143,10 @@ function PermitCreator({
                 </div>
 
                 <div>
-                  <label htmlFor="startdate" className="block mb-2">
+                  <label htmlFor="startDate" className="block mb-2">
                     Start Date
                   </label>
-                  <Field name="startdate">
+                  <Field name="startDate">
                     <DatePicker
                       selected={startDate}
                       className="h-[55px] rounded-lg w-full"
@@ -112,10 +158,10 @@ function PermitCreator({
                 </div>
 
                 <div>
-                  <label htmlFor="enddate" className="block mb-2">
+                  <label htmlFor="endDate" className="block mb-2">
                     End Date
                   </label>
-                  <Field name="enddate">
+                  <Field name="endDate">
                     <DatePicker
                       selected={endDate}
                       className="h-[55px] rounded-lg w-full"
@@ -128,7 +174,7 @@ function PermitCreator({
 
                 <div className="relative">
                   <label htmlFor="licensePlate" className="block mb-2">
-                    License Plate
+                    License Plate <span className="text-red-500">*</span>
                   </label>
                   <Field
                     name="licensePlate"
@@ -160,13 +206,14 @@ function PermitCreator({
                     className="py-4 w-full"
                     type="primary"
                   >
-                    Submit
+                    {updateMode ? "Update" : "Submit"}
                   </Button>
                 </div>
               </div>
             );
           }}
         </Form>
+        <ToastContainer />
       </section>
     </Drawer>
   );
