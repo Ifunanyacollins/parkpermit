@@ -9,8 +9,6 @@ import InFlowChart from "../src/components/StaticComponents/InFlowChart";
 const Home: NextPage = () => {
   return (
     <Layout>
-      <h1>welcome to next</h1>
-
       <div className="flex space-x-5">
         {/* Overview and stats */}
         <div className="flex-1 space-y-5 ">
