@@ -9,9 +9,7 @@ import Button from "../src/components/button";
 import { dehydrate, QueryClient, useQuery } from "react-query";
 import Requests from "../src/libs/request";
 import { DataRow } from "../src/tables/AllPermitTable";
-const AllPermitTable = dynamic(() => import("../src/tables/AllPermitTable"), {
-  ssr: false,
-});
+import AllPermitTable from "../src/tables/AllPermitTable";
 
 const PermitCreator = dynamic(
   () => import("../src/components/StaticComponents/PermitCreator"),
