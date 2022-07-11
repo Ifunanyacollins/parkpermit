@@ -5,7 +5,9 @@ import Card from "../card";
 function CountCard({ title, count }: { title: string; count: number }) {
   return (
     <Card>
-      <span className=" text-greyscale600 text-sm ">{title}</span>
+      <span role="count" className=" text-greyscale600 text-sm ">
+        {title}
+      </span>
       <h2 className="text-greyscale900 font-bold text-lg  break-words">
         {numberFormat(count)}
       </h2>

@@ -10,9 +10,12 @@ function Layout({ children: content }: LayoutProps) {
       <section className="bg-white col-span-2 overflow-scroll">
         <Sidebar />
       </section>
-      <section className=" bg-[#F7F7F9] col-span-10 overflow-scroll">
-        <Header />
-        <div className="mx-10 py-10">{content}</div>
+      <section className=" bg-[#F7F7F9] col-span-10 overflow-scroll flex flex-col">
+        <div>
+          <Header />
+        </div>
+
+        <div className="mx-10 py-10 overflow-scroll">{content}</div>
       </section>
     </main>
   );

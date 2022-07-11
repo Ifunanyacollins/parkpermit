@@ -49,7 +49,11 @@ function Button({
       {!loading && (
         <span className={styleIconPosition}>{icon && Icons[icon]}</span>
       )}
-      {loading && <span className="self-center block">{Icons["loader"]}</span>}
+      {loading && (
+        <span className="self-center block animate-spin">
+          {Icons["loading"]}
+        </span>
+      )}
       {text ||
         (children && (
           <span className={styleTextPosition}>{text ? text : children}</span>
