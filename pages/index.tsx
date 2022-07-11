@@ -1,3 +1,4 @@
+import RecentPermit from "../src/components/StaticComponents/RecentPermit";
 import type { NextPage } from "next";
 import Card from "../src/components/card";
 import icons from "../src/components/Icons";
@@ -47,6 +48,11 @@ const Home: NextPage = () => {
             <hr />
             <div className="py-1">
               <span className="font-semibold text-sm">Recent Permit</span>
+              <div className="space-y-3 my-3">
+                <RecentPermit name="Collins Ogbuzuru" date="Nov 22 2022" />
+                <RecentPermit name="Kia Jane" date="Dec 22 2022" />
+                <RecentPermit name="Kane Madin" date="July 21 2022" />
+              </div>
             </div>
           </Card>
         </div>
